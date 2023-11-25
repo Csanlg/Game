@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+html {
+    --primary-color: #161f6d; /* Присваиваем цвет значению --primary-color */
+    --secondary-color: #00abe1; /* Присваиваем цвет значению --secondary-color */
+}
+
+html, body {
+    margin: 0;
+}
+
+
+/* 1em = 20px */
+body {
+    font-size: 2ch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-family: 'Luckiest Guy', cursive;
+    letter-spacing: 0.15em; /* Отступ между эллементами */
+}
+
+.heading {
+    font-size: 2em;
+    user-select: none;
+}
+
+.description {
+    font-size: 1.5em;
+    user-select: none;
+}
+
+#game-board {   /* Игровое поле*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    margin-top: 1em;
+}
+
+#new-game-button {  /* Стиль кнопки New Game*/
+    border: none;
+    border-radius: 1.5em;
+    padding: 0.5em 1.5em;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1em;
+    font-family: inherit; /* */
+    letter-spacing: inherit; /* Отступ между эллементами */
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+}
+
+#new-game-button:hover {
+    opacity: 0.85; /* Прозрачность при наведении (Наведение: hover, Прозрачность: opacity */
+}
+
+.card { /* Рамка карточки */
+    width: 5em;
+    height: 5em;
+    perspective: 50em; /* Перспектива для анимации вращения*/
+    cursor: pointer;
+}
+
+.card-inner { /* Карточка */
+    width: 100%;
+    height: 100%;
+    position: relative; /**/
+    transform-style: preserve-3d; /* 3D вращение при наведении */
+    transition: transform 0.5s; /* Время анимации */
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Накладываются друг на друга */
+    backface-visibility: hidden; /* Тут и так всё понятно */
+    display: flex;
+    justify-content: center; /* Отцентровать по горизонтали*/
+    align-items: center; /* Отцентровать по вертикали*/
+    background-color: var(--primary-color);
+    border-radius: 0.5em;
+    font-size: 2.5em;
+    color: white;
+    box-shadow: 0.02em 0.02em 0.02em 0.02em rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+.card.visible .card-inner {  /* Поворот карточки на 180 по оси Y (hover -при наведении) */
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+#victory-message {
+    font-size: 6ch;
+}
+
+.name {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    margin-top: 15ch;
+}
